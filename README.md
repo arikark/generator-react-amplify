@@ -20,10 +20,11 @@ yo amplify-react
 ## Usage
 
 - Follow the prompts by the Pulumi cli to deploy the application.
-- Pulumi will deploy the react application to amplify within using the credentials supplied to your machine's aws cli profile.
-- Once your project is deployed, navigate to amplify within the aws console. The application should deploy automatically, but in some cases may require you to click 'Run'.
-- Once deployed to amplify, any changes to the designated repo's master branch will be deployed by the amplify's CICD pipeline.
-- The domain can also be found in the amplify console.
+- Pulumi will deploy the react application to Amplify within using the credentials supplied to your machine's aws cli profile.
+- Once your project is deployed, navigate to Amplify within the aws console. The application should deploy automatically, but in some cases may require you to click 'Run'.
+- Once deployed to Amplify, any changes to the designated repo's master branch will be deployed by Amplify's CICD pipeline.
+- When developing the React app, install packages by running npm install in the React application's parent dir.
+- The domain for the React app can be found in the Amplify console.
 
 NB: The project will ask for a valid GitHub repo for the react application to be deployed to. This should be provided along with a valid access token. If this is not possible, you can elect to just generate the project with deploying it to amplify.
 
