@@ -1,33 +1,44 @@
-const Generator = require("yeoman-generator");
-const mkdirp = require("mkdirp");
+const Generator = require('yeoman-generator');
+const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
   async prompting() {
     this.answers = await this.prompt([
       {
-        name: "projectName",
-        message: "Your project name",
-        default: "generated-app"
+        // Name for the overall project
+        name: 'projectName',
+        message: 'Your project name',
+        default: 'MyProject'
       },
       {
-        name: "appName",
-        message: "Enter your react app name",
-        default: "frontend"
+        // Name for the react application
+        name: 'appName',
+        message: 'Enter your react app name',
+        default: 'frontend'
       },
       {
-        name: "platformName",
-        message: "Enter your platform name",
-        default: "platform"
+        // Name for the pulumi platform
+        name: 'platformName',
+        message: 'Enter your platform name',
+        default: 'platform'
       },
       {
-        name: "gh_token",
-        message: "Enter your gh access token",
-        default: ""
+        // The GH repo to deploy the react application to
+        name: 'repo',
+        message: 'Enter your app repo url',
+        default: 'https://github.com/arielkark-versent/test'
       },
       {
-        name: "repo",
-        message: "Enter your app repo url",
-        default: "https://github.com/arielkark-versent/test"
+        // A valid GH access token for the react application's repo
+        name: 'ghToken',
+        message: 'Enter your gh access token',
+        default: 'abc123'
+      },
+      {
+        // Optional deploy - without deployment, just the template files will be generated
+        name: 'deploy',
+        message: 'Deploy?(Y/N)',
+        default: 'N'
       }
     ]);
   }
@@ -38,23 +49,35 @@ module.exports = class extends Generator {
   }
 
   _runFeSubGenerator() {
-    this.composeWith(require.resolve("../frontend"), {
-      name: this.answers.appName,
+    this.composeWith(require.resolve('../frontend'), {
+      appName: this.answers.appName,
       repo: this.answers.repo
     });
   }
 
-  _runBeSubGenerator() {
-    this.composeWith(require.resolve("../platform"), {
-      name: this.answers.platformName,
+  _runPlatSubGenerator() {
+    this.composeWith(require.resolve('../platform'), {
+      platformName: this.answers.platformName,
       appName: this.answers.appName,
-      gh_token: this.answers.gh_token,
-      gh_url: this.answers.repo
+      ghToken: this.answers.ghToken,
+      repo: this.answers.repo
+    });
+  }
+  _runDeploySubGenerator() {
+    this.composeWith(require.resolve('../deploy'), {
+      platformName: this.answers.platformName,
+      appName: this.answers.appName,
+      ghToken: this.answers.ghToken,
+      repo: this.answers.repo
     });
   }
 
   async default() {
     await this._runFeSubGenerator();
-    await this._runBeSubGenerator();
+    await this._runPlatSubGenerator();
+  }
+
+  end() {
+    this.answers.deploy === 'Y' && this._runDeploySubGenerator();
   }
 };
