@@ -26,13 +26,13 @@ module.exports = class extends Generator {
         // The GH repo to deploy the react application to
         name: 'repo',
         message: 'Enter your app repo url',
-        default: 'https://github.com/arielkark-versent/test'
+        default: ''
       },
       {
         // A valid GH access token for the react application's repo
         name: 'ghToken',
         message: 'Enter your gh access token',
-        default: 'abc123'
+        default: ''
       },
       {
         // Optional deploy - without deployment, just the template files will be generated
