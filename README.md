@@ -4,11 +4,10 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-react-amplify using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-react-amplify using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)). Run npm link from generator parent dir.
 
 ```bash
 npm install -g yo
-npm link (from generator parent dir)
 npm install -g generator-amplify-react
 ```
 
