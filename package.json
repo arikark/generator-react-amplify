@@ -1,0 +1,10 @@
+{
+  "name": "platform",
+  "main": "index.js",
+  "dependencies": {
+    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/aws": "^4.0.0",
+    "@pulumi/awsx": "^0.30.0",
+    "dotenv": "^10.0.0"
+  }
+}
