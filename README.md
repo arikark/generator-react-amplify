@@ -33,7 +33,7 @@ NB: The project will ask for a valid GitHub repo for the react application to be
 - Yeoman Generator: main branch
 - Pulumi Code: platform branch (generated code)
 - React application with linting and prettifying set up: frontend branch (generated code)
-- CI/CD config: amplify.yaml in frontend branch (generated code)
+- CI/CD config: amplify.yml in frontend branch (generated code)
 - Link to React app hosted on AWS: https://master.d12ookqvtntzxi.amplifyapp.com/ (deployed from master)
 
 ## Other Popular Ways of Hosting a React App in AWS
