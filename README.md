@@ -8,6 +8,7 @@ First, install [Yeoman](http://yeoman.io) and generator-react-amplify using [npm
 
 ```bash
 npm install -g yo
+npm link (from generator parent dir)
 npm install -g generator-amplify-react
 ```
 
